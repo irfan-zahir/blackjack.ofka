@@ -262,7 +262,7 @@ client.on('message', async (message) => {
         )
     }
 
-    if(command === 'wallet' || 'balance'){
+    if(command === 'wallet' || command === 'balance'){
         message.channel.send(new Discord.MessageEmbed()
             .setTitle(`${user.username}'s Wallet`)
             .setDescription(`${user.username}, you have ${user.chips} chips available`)
