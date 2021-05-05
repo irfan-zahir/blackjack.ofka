@@ -152,7 +152,12 @@ module.exports = class Blackjack {
                     case emoji.dd:
                         const newBet = this.bet * 2
                         if(this.player.chips < newBet){
-                            //cannot put more bet
+                            message.channel.send(new MessageEmbed()
+                                .setTitle('Cannot put the bet!')
+                                .setDescription(
+                                    `${this.player.username}, make sure you have enough bet to place. Know your place, poor.`
+                                )
+                            )
                             break;
                         }
                         this.playerHand.push(this.dealingCard())
