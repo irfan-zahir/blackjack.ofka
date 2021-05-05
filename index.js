@@ -94,9 +94,9 @@ client.on('guildCreate', async (guild)=>{
     channel.send(
         `Welcome to BlackJack where you can play blackjack and compete for ranking with your friends within this server\n\n`+
         'For starter, everyone will receive 500 initial chips in their wallet to play BlackJack\n\n' +
-        `Type ${prefix}command] and use the available command here:\n` +
+        `Type ${prefix}[command] and use the available command here:\n` +
         '1.\tblackjack [space] [amount of bet] - to start playing blackjack\n' +
-        '2.\tblackjack [space] rules - to show rules of playing BlackJack\n' +
+        '2.\trules - to show rules of playing BlackJack\n' +
         '3.\tclaim - to claim your daily 300 chips\n' +
         '4.\twallet - to check available chips in your wallet\n' +
         '5.\tranking - to see BlackJack Hall of Fame within the server\n' +
@@ -290,6 +290,18 @@ client.on('message', async (message) => {
             'Example 2: You have a Ace of spades, a 9 of hearts and a 10 of hearts. Your hand value supposedly is 30, but since you have ' +
             'an Ace in your hand, your hand value is 20\n\n' +
             'Goodluck and have fun gambling! :D'
+        )
+    }
+
+    if(command === 'commands'){
+        message.channel.send(
+            '###\t\tBlackJack commands\t\t##\n\n' +
+            '1.\tblackjack [bet]\n' +
+            '2.\trules \n' +
+            '3.\tclaim\n' +
+            '4.\twallet\n' +
+            '5.\tranking\n' +
+            '6.\tglobal-ranking\n'
         )
     }
 
