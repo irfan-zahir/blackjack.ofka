@@ -68,19 +68,8 @@ client.on('ready', ()=>{
 })
 
 client.on('guildCreate', async (guild)=>{
-    var channel = await guild.channels.create('BlackJack-Bot', 
+    var channel = await guild.channels.create('play-blackjack', 
         {
-            type:'category',
-
-            permissionOverwrites: [
-                {
-                    id: guild.roles.everyone,
-                    allow: ['VIEW_CHANNEL', 'SEND_MESSAGES', 'READ_MESSAGE_HISTORY'],
-                }
-            ]
-        }
-    ).then(async cat=>{
-        return await guild.channels.create('play-blackjack',{
             type:'text',
             permissionOverwrites: [
                 {
@@ -88,8 +77,10 @@ client.on('guildCreate', async (guild)=>{
                     allow: ['VIEW_CHANNEL', 'SEND_MESSAGES', 'READ_MESSAGE_HISTORY'],
                 }
             ]
-        }) 
-    })
+        }
+    )
+
+    
 
     /**@type {GuildData} */
     const guildData = {
