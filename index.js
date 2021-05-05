@@ -214,9 +214,9 @@ client.on('message', async (message) => {
             }
             dbservice.updateUserDetails(update)
             return message.channel.send(new Discord.MessageEmbed()
-                .setTitle(`${message.author.username} claimed 300 chips\n\\n`)
+                .setTitle(`${message.author.username} claimed 300 chips`)
                 .setDescription(
-                    `${message.author.username} now have ${update.chips}\n\n` +
+                    `${message.author.username} now have ${update.chips} chips\n\n` +
                     'Claim your 300 chips today by typing #claim now'
                 )
             )
