@@ -196,10 +196,6 @@ client.on('message', async (message) => {
         }        
     }
 
-    if(command === 'balance'){
-        console.log(`${user.chips} chips in db`)
-    }
-
     if(command === 'claim'){
         if(!user.dailyClaims){
             /**@type {User} */
@@ -258,7 +254,7 @@ client.on('message', async (message) => {
         )
     }
 
-    if(command === 'wallet'){
+    if(command === 'wallet' || 'balance'){
         message.channel.send(new Discord.MessageEmbed()
             .setTitle(`${user.username}'s Wallet`)
             .setDescription(`${user.username}, you have ${user.chips} chips available`)
