@@ -40,26 +40,32 @@ const emoji = {
     dd: '839143634128863312'
 }
 
-setInterval(() => {
-    var date = new Date()
+client.on('ready', ()=>{
+    
+    setInterval(async() => {
+        var date = new Date()
 
-    if(date.getHours()=== 0 && date.getMinutes() === 0){
-        dbservice.dailyResetClaims()
-        client.guilds.cache.forEach(guild=>{
+        if(date.getHours()=== 0 && date.getMinutes() === 0){
+            dbservice.dailyResetClaims()
 
-        })
+            var guildData = await dbservice.getAllGuildData()
+            guildData.forEach(guild=>{
+                var channel = client.channels.cache.find(ch=> ch.id === guild.channelID)
+                if(channel.isText()) 
+                channel.send(new Discord.MessageEmbed()
+                    .setTitle('Claim your free chips!')
+                    .setDescription(
+                        '```' +
+                        'Get your free 300 chips everyday after 12:00am by typing command #claim\n\n' +
+                        'Happy Gambling :D' +
+                        '```'
+                    )
+                )         
+            })
+        }
 
-        // clie.channel.send(new Discord.MessageEmbed()
-        //     .setTitle('Claim your free chips!')
-        //     .setDescription(
-        //         '```' +
-        //         'Get your free 300 chips everyday after 12:00am by typing command #claim\n\n' +
-        //         'Happy Gambling :D' +
-        //         '```'
-        //     ))
-    }
-
-}, 60000);
+    }, 60000);
+})
 
 client.on('guildCreate', async (guild)=>{
     var channel = await guild.channels.create('play-blackjack', 
@@ -73,6 +79,8 @@ client.on('guildCreate', async (guild)=>{
             ]
         }
     )
+
+    
 
     /**@type {GuildData} */
     const guildData = {

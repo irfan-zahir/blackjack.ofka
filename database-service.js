@@ -102,6 +102,25 @@ const findGuildDetails = async (guidlID) => {
     })
 }
 
+const getAllGuildData = async () => {
+    return await mongo().then( async (mongoose)=>{   
+        return await guildSchema.find().then(datas=>{
+            /**@type {Array.<GuildData>} */
+            var guilds = []
+            datas.forEach(data => {
+                /**@type {GuildData} */
+                var guild = {
+                    gid: data.get('gid'),
+                    channelID: data.get('channelID'),
+                    name: data.get('name')
+                }
+                guilds.push(guild);
+            });
+            return guilds
+        })
+    })
+}
+
 //ranking
 const displayInGuildRanking = async (guildID) => {
     return await mongo().then( async (mongoose)=>{   
@@ -150,4 +169,4 @@ const displayGlobalRanking = async () => {
     })
 }
 
-module.exports = {createNewUser, readUserData, updateUserDetails, dailyResetClaims, registeringNewServer, displayInGuildRanking, displayGlobalRanking, findGuildDetails}
+module.exports = {createNewUser, readUserData, updateUserDetails, dailyResetClaims, registeringNewServer, displayInGuildRanking, displayGlobalRanking, findGuildDetails, getAllGuildData}
