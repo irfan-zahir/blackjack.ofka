@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/blackjack-ofka/blackjack.ofka#readme",
   "dependencies": {
-    "discord.js": "^12.5.3"
+    "discord.js": "^12.5.3",
+    "mongoose": "^5.12.7"
   }
 }
