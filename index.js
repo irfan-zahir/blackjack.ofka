@@ -117,8 +117,8 @@ client.on('message', async (message) => {
 
     const command = args.shift().toLowerCase();
 
-
-    if(commands.findIndex(cmd=>cmd === args[0]) < 0 ) return //return if command is not listed
+    console.log(`index of command ${commands.findIndex(cmd=>cmd === args[0])}`)
+    if(!(commands.findIndex(cmd=>cmd === args[0]) > 0) ) return //return if command is not listed
 
     if(message.author.bot) return
     if(!message.content.startsWith(prefix)) return

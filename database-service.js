@@ -57,7 +57,7 @@ const readUserData = async (user) => {
 const updateUserDetails = async (user) => {
     await mongo().then( async (mongoose)=>{        
         try {
-            await mongoose.connection.db.collection('users').updateOne({uid: user.uid, gid: user.gid}, {$set: user}).then(()=>console.log(user))
+            await mongoose.connection.db.collection('users').updateOne({uid: user.uid, gid: user.gid}, {$set: user})
         } catch (error) {
             return `Error occured in \'updateUserField()\' : ${error}`
         }finally{
