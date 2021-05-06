@@ -342,13 +342,14 @@ module.exports = class Blackjack {
 
     returnEmbededGameResult(result, playerWin){
         var embeded = new MessageEmbed();
+        var gameRes = `and ${playerWin ? 'WON' : 'LOSE'} ${this.bet} chips`
         return embeded.setTitle(`${this.player.username}, you ${playerWin == null ? 'SPLIT!' : (playerWin ? 'WIN :D' : 'LOSE :(')}`)
             .setDescription(
                 '```' +
                 'Game Ended\n' +
                 `Dealer's hand (card count: ${this.count_hand(this.dealerHand)})` +
                 `\n${this.show_all_hand(this.dealerHand)}\n` +
-                `\n ${result} and ${playerWin ? 'WON':'LOSE'} ${this.bet} chips\n` +
+                `\n\t${result}${playerWin == null ? '': gameRes}\n` +
                 `\n${this.show_all_hand(this.playerHand)}\n`+
                 `Player's hand (card count: ${this.count_hand(this.playerHand)})` +
                 '```'
