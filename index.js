@@ -105,21 +105,27 @@ client.on('guildCreate', async (guild)=>{
     )
 })
 
-//TODO
-//1. rules
-//2. wallet
+const commands = [
+    'blackjack', 'bj', 'rules', 'claim',
+    'wallet', 'ranking', 'global-ranking'
+] 
 
 client.on('message', async (message) => {
+
+    const commandBody = message.content.slice(1); 
+    const args = commandBody.split(' '); 
+
+    const command = args.shift().toLowerCase();
+
+
+    if(commands.findIndex(cmd=>cmd === args[0]) < 0 ) return //return if command is not listed
+
     if(message.author.bot) return
     if(!message.content.startsWith(prefix)) return
     var guildDetails = await dbservice.findGuildDetails(message.guild.id)
     if(!(message.channel.id === guildDetails.channelID)){
         return message.channel.send(`Please use BlackJack commands only at <#${guildDetails.channelID}>`)
     }
-    const commandBody = message.content.slice(1); 
-    const args = commandBody.split(' '); 
-    const command = args.shift().toLowerCase();
-
     const baseInfo =  {
         uid: message.author.id,
         gid: message.guild.id,
