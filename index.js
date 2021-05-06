@@ -146,7 +146,7 @@ client.on('message', async (message) => {
 
         if(!bet){
             message.channel.send(`Beep boop <@${user.uid}>! Make sure to include your desired bets.\n`
-            + '```' + '\ttype #blackjack [bet] and put your bet :)' + '```' )
+            + '```' + `\ttype ${prefix}blackjack [bet] and put your bet :)` + '```' )
             return
         }
 
@@ -225,7 +225,7 @@ client.on('message', async (message) => {
                 .setTitle(`${message.author.username} claimed 300 chips`)
                 .setDescription(
                     `${message.author.username} now have ${update.chips} chips\n\n` +
-                    'Claim your 300 chips today by typing #claim now'
+                    `Claim your 300 chips today by typing ${prefix}claim now`
                 )
             )
         }
