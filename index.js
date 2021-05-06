@@ -45,7 +45,7 @@ client.on('ready', ()=>{
     setInterval(async() => {
         var date = new Date()
 
-        if(date.getHours()=== 0 && date.getMinutes() === 0){
+        if(date.getHours()=== 16 && date.getMinutes() === 0){
             dbservice.dailyResetClaims()
 
             var guildData = await dbservice.getAllGuildData()
