@@ -107,7 +107,7 @@ client.on('guildCreate', async (guild)=>{
 
 const commands = [
     'blackjack', 'bj', 'rules', 'claim',
-    'wallet', 'ranking', 'global-ranking'
+    'wallet', 'ranking', 'global-ranking', 'commands'
 ] 
 
 client.on('message', async (message) => {
